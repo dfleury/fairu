@@ -77,7 +77,8 @@ def get_setup_config():
 if __name__ == '__main__':
     setup(name='fairu',
         version=__version__,
-        description='Description',
+        description="Fairu is a python library to handle files easily using a "
+                    "chain pattern like the jQuery framework.",
         author=u'Diego Fleury',
         author_email='dfleury@gmail.com',
         license='GPL',
