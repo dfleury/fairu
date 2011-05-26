@@ -86,7 +86,10 @@ if __name__ == '__main__':
         packages=packages(),
         long_description=description(),
         entry_points=entry_points(),
-        classifiers=["Development Status :: 1 - Planning",
+            classifiers=["Development Status :: 2 - Pre-Alpha",
+                     "Intended Audience :: Developers"
+                     "License :: OSI Approved :: GNU General Public "
+                         "License (GPL)"
                      "Programming Language :: Python :: 2",
                      "Topic :: Software Development :: Libraries :: "
                          "Python Modules"],
