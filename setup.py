@@ -38,7 +38,7 @@ def description():
 
 
 def requirements():
-    lines = open('requirements.txt', 'r').readlines()
+    lines = open('REQUIREMENTS', 'r').readlines()
     requirements = []
     for line in lines:
         requirements.append(line.replace('\n', ''))
