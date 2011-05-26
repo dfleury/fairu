@@ -23,6 +23,8 @@ Unfortunately, the project is in development of pre-alpha. It means that right
 now, while I'm writting this readme, nothing is working. But I imagine the
 method's interface would be something like that:
 
+    import fairu
+
     fairu
         .goTo('~/Downloads') # assumes $HOME/Download as work folder
         .select('*.rar')     # select all rar files
@@ -37,4 +39,5 @@ method's interface would be something like that:
         .remove()                     # removes all files remaing (except moved files)
 
 This is just a draft. Suggestions are welcome.
+
 Thank's for spend your time reading until here.
