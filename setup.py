@@ -1,20 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# <Fairu - Description>
-# Copyright (C) <2010-2011>  Gabriel Falcão <gabriel@nacaolivre.org>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import sys
@@ -56,7 +41,6 @@ def entry_points():
         command_hook = "distutils.commands"
         ENTRY_POINTS[command_hook] = []
 
-        # coverage
         from commands import coverage_analysis
         if coverage_analysis.COVERAGE_ANALYSIS_AVAILABLE:
             ENTRY_POINTS[command_hook].append("test = commands.coverage_ana"
@@ -75,24 +59,24 @@ def get_setup_config():
 
 
 if __name__ == '__main__':
-    setup(name='fairu',
-        version=__version__,
-        description="Fairu is a python library to handle files easily using a "
-                    "chain pattern like the jQuery framework.",
-        author=u'Diego Fleury',
-        author_email='dfleury@gmail.com',
-        license='GPL',
-        keywords="files batch proccess handling",
-        url='http://github.com/dfleury/fairu',
-        packages=packages(),
-        long_description=description(),
-        entry_points=entry_points(),
-            classifiers=["Development Status :: 2 - Pre-Alpha",
-                     "Intended Audience :: Developers"
-                     "License :: OSI Approved :: GNU General Public "
-                         "License (GPL)"
-                     "Programming Language :: Python :: 2",
-                     "Topic :: Software Development :: Libraries :: "
-                         "Python Modules"],
-        install_requires=requirements()
+    setup(name         = 'fairu',
+          version      = __version__,
+          description  = "Fairu is a python library to handle files easily "
+                             "using a chain pattern like the jQuery framework.",
+          author       = 'Diego Fleury',
+          author_email = 'dfleury@gmail.com',
+          license      = 'GPL',
+          keywords     = "files batch process handling",
+          url          = 'http://github.com/dfleury/fairu',
+          packages     = packages(),
+          long_description = description(),
+          entry_points = entry_points(),
+          classifiers  = ["Development Status :: 2 - Pre-Alpha",
+                        "Intended Audience :: Developers"
+                        "License :: OSI Approved :: GNU General Public "
+                            "License (GPL)"
+                        "Programming Language :: Python :: 2",
+                        "Topic :: Software Development :: Libraries :: "
+                            "Python Modules"],
+          install_requires = requirements()
     )
