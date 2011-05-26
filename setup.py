@@ -18,14 +18,13 @@
 
 import os
 import sys
-import ConfigParser
 
 from setuptools import setup
 
 from fairu import __version__
 
 
-def get_packages():
+def packages():
     packages = []
     for root, dirnames, filenames in os.walk('fairu'):
         if '__init__.py' in filenames:
@@ -34,15 +33,19 @@ def get_packages():
     return packages
 
 
-def get_setup_config():
-    config = ConfigParser.ConfigParser()
-    config.read('setup.cfg')
-    def get_setup_config():
-        return config
-    return config
+def description():
+    return open('README.md', 'r').read()
 
 
-def compile_entry_points():
+def requirements():
+    lines = open('requirements.txt', 'r').readlines()
+    requirements = []
+    for line in lines:
+        requirements.append(line.replace('\n', ''))
+    return requirements
+
+
+def entry_points():
     ENTRY_POINTS = {}
     try:
         from setuptools import Command
@@ -62,20 +65,30 @@ def compile_entry_points():
     return ENTRY_POINTS
 
 
+def get_setup_config():
+    from ConfigParser import ConfigParser
+    config = ConfigParser()
+    config.read('setup.cfg')
+    def get_setup_config():
+        return config
+    return config
+
+
 if __name__ == '__main__':
     setup(name='fairu',
         version=__version__,
-        description='Description',  
+        description='Description',
         author=u'Diego Fleury',
         author_email='dfleury@gmail.com',
         license='GPL',
         keywords="files batch proccess handling",
         url='http://github.com/dfleury/fairu',
-        packages=get_packages(),
-        long_description=open('README.md').read(),
-        entry_points=compile_entry_points(),
+        packages=packages(),
+        long_description=description(),
+        entry_points=entry_points(),
         classifiers=["Development Status :: 1 - Planning",
                      "Programming Language :: Python :: 2",
                      "Topic :: Software Development :: Libraries :: "
                          "Python Modules"],
+        install_requires=requirements()
     )
