@@ -1,7 +1,7 @@
 Fairu is a python library to handle files easily using a chain pattern like
 the jQuery framework.
 
-Select a set of files and make batch actions like extract, delete, move, etc.
+Select a set of files and do batch actions like extract, delete, move, etc.
 
 Installation
 ---
@@ -23,13 +23,13 @@ Unfortunately, the project is in development of pre-alpha. It means that right
 now, while I'm writting this readme, nothing is working. But I imagine the
 method's interface would be something like that:
 
-    import fairu
+    from fairu import Fairu
 
-    fairu
+    Fairu()
         .goTo('~/Downloads') # assumes $HOME/Download as work folder
-        .select('*.rar')     # select all rar files
+        .select('*.rar')     # selects all rar files in work folder
             .extract(result) # try to extract these rar files and save a list of extracted files
-            .delete()        # delete these rar files
+            .delete()        # deletes these rar files
 
     result                            # uses the set of files extracted
         .select('fairu_[0-9]{3}.avi') # of this set, selects files that match this pattern
