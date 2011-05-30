@@ -3,10 +3,11 @@ omit=tests/*
 
 # Regexes for lines to exclude from consideration
 exclude_lines =
-    # Don't complain about missing debug-only code:
+    pragma: no cover
     def __repr__
-    if self\.debug
-
-    # Don't complain if non-runnable code isn't run:
+    if self.debug:
+    if settings.DEBUG
+    raise AssertionError
+    raise NotImplementedError
     if 0:
     if __name__ == .__main__.:

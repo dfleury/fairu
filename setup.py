@@ -38,24 +38,11 @@ def entry_points():
         sys.stderr.write("setuptools.Command could not be imported: setuptools "
                          "extensions not available")
     else:
-        command_hook = "distutils.commands"
-        ENTRY_POINTS[command_hook] = []
-
-        from commands import coverage_analysis
-        if coverage_analysis.COVERAGE_ANALYSIS_AVAILABLE:
-            ENTRY_POINTS[command_hook].append("test = commands.coverage_ana"
-                                              "lysis:CoverageAnalysis")
+        ENTRY_POINTS["distutils.commands"] = [
+            "test = commands.test_with_coverage:TestWithCoverage"
+        ]
 
     return ENTRY_POINTS
-
-
-def get_setup_config():
-    from ConfigParser import ConfigParser
-    config = ConfigParser()
-    config.read('setup.cfg')
-    def get_setup_config():
-        return config
-    return config
 
 
 if __name__ == '__main__':

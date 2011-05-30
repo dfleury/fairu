@@ -7,6 +7,7 @@ Fairu testing suite.
 import unittest
 import re
 import os
+import sys
 
 def get_test_suite(test_file_names=None):
     """
@@ -36,12 +37,19 @@ def get_test_file_names():
                                   (relative_path, os.path.splitext(f)[0]))
     return test_files
 
-def run():
+def run(test_module=None):
     """
     Runs the testsuite
     """
+    
+    if test_module and isinstance(test_module, str):
+        test_module = [test_module.replace('.py', '').replace('/', '.')]
+
     runner = unittest.TextTestRunner()
-    runner.run(get_test_suite())
+    runner.run(get_test_suite(test_module))
 
 if __name__ == "__main__":
-    run()
+    test_module = None
+    if len(sys.argv) == 2:
+        test_module = sys.argv[1]
+    run(test_module)
