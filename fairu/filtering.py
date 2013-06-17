@@ -1,3 +1,7 @@
-def select(self):
-    # do somethings and return
-    return self
+import core
+
+
+def select(parent, filter):
+    instance = core.Fairu()
+    instance._parent = parent
+    return instance
