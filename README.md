@@ -14,7 +14,7 @@ If you want to contribute with fairu, make sure that you have all requirements
 needed to work:
 
     cd fairu
-    pip install -r REQUIREMENTS
+    pip install -r requirements.txt
 
 Usage example
 ---
