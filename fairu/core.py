@@ -1,3 +1,4 @@
+import collections
 import os
 
 import filtering
@@ -34,6 +35,14 @@ class Fairu(object):
             element = self._elements[self._iterator_index]
             self._iterator_index += 1
             return element
+
+    def add(self, items):
+        if type(items) == file:
+            self._elements.append(items)
+        elif isinstance(items, collections.Iterable):
+            for item in items:
+                self.add(item)
+        return self
 
     def select(self, filter):
         return filtering.select(self, filter)

@@ -1,6 +1,7 @@
 from inspect import isclass
-import unittest
 import os
+import unittest
+from types import MethodType
 
 from fairu import Fairu
 
@@ -65,6 +66,17 @@ class CoreTestCase(unittest.TestCase):
         instanceB = Fairu(parent=instanceA)
         self.assertEqual(instanceA._current_directory, instanceB._current_directory)
         self.assertEqual(instanceA._previous_directory, instanceB._previous_directory)
+
+    def test_add_item_to_collection(self):
+        self.assertEqual(type(Fairu().add), MethodType)
+
+        instance = Fairu().\
+            add(file('COPYING')).\
+            add((file('requirements.txt'), file('setup.py'),))
+
+        self.assertEqual('COPYING', instance._elements[0].name)
+        self.assertEqual('requirements.txt', instance._elements[1].name)
+        self.assertEqual('setup.py', instance._elements[2].name)
 
 if __name__ == '__main__':
     unittest.main()
