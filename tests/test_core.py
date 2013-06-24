@@ -12,13 +12,13 @@ class CoreTestCase(unittest.TestCase):
 
     def test_if_Fairu_class_is_avaliable_importing_fairu_module(self):
         import fairu
-        self.assertTrue(getattr(fairu, 'Fairu', False))
+        self.assertTrue(hasattr(fairu, 'Fairu'))
         self.assertTrue(isclass(fairu.Fairu))
 
     def test_if_is_iterable(self):
-        self.assertTrue(getattr(Fairu(), '__iter__', False))
-        self.assertTrue(getattr(Fairu(), 'next', False))
-        self.assertTrue(getattr(Fairu(), '__len__', False))
+        self.assertTrue(hasattr(Fairu(), '__iter__'))
+        self.assertTrue(hasattr(Fairu(), 'next'))
+        self.assertTrue(hasattr(Fairu(), '__len__'))
 
     def test_if_Fairu_instance_can_be_iterabled_by_for_in(self):
         instance = Fairu()
@@ -52,9 +52,9 @@ class CoreTestCase(unittest.TestCase):
 
     def test_existence_of_location_property(self):
         instance = Fairu()
-        self.assertTrue(getattr(instance, '_start_directory', False))
-        self.assertTrue(getattr(instance, '_current_directory', False))
-        self.assertTrue(getattr(instance, '_previous_directory', False) is None)
+        self.assertTrue(hasattr(instance, '_start_directory'))
+        self.assertTrue(hasattr(instance, '_current_directory'))
+        self.assertTrue(hasattr(instance, '_previous_directory'))
         self.assertEqual(instance._start_directory, os.getcwdu())
         self.assertEqual(instance._current_directory, os.getcwdu())
         self.assertEqual(instance._previous_directory, None)
