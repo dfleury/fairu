@@ -1,12 +1,24 @@
+import os
+
 import filtering
+
+
+START_DIRECTORY = os.getcwdu()
 
 
 class Fairu(object):
 
-    def __init__(self):
+    def __init__(self, parent=None):
         self._elements = []
         self._iterator_index = 0
-        self._parent = None
+        self._parent = parent
+        self._start_directory = START_DIRECTORY
+        self._current_directory = self._start_directory
+        self._previous_directory = None
+
+        if isinstance(self._parent, Fairu):
+            self._current_directory = self._parent._current_directory
+            self._previous_directory = self._parent._previous_directory
 
     def __iter__(self):
         self._iterator_index = 0

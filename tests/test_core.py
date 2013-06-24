@@ -1,5 +1,6 @@
-import unittest
 from inspect import isclass
+import unittest
+import os
 
 from fairu import Fairu
 
@@ -44,6 +45,23 @@ class CoreTestCase(unittest.TestCase):
 
     def test_if_Fairu_have_a_parent_set_of_elements(self):
         self.assertEqual(Fairu()._parent, None)
+
+    def test_existence_of_location_property(self):
+        instance = Fairu()
+        self.assertTrue(getattr(instance, '_start_directory', False))
+        self.assertTrue(getattr(instance, '_current_directory', False))
+        self.assertTrue(getattr(instance, '_previous_directory', False) is None)
+        self.assertEqual(instance._start_directory, os.getcwdu())
+        self.assertEqual(instance._current_directory, os.getcwdu())
+        self.assertEqual(instance._previous_directory, None)
+
+    def test_inheritance_of_history_directory_property(self):
+        instanceA = Fairu()
+        instanceA._current_directory = '/tmp/'
+        instanceA._previous_directory = '/foo/'
+        instanceB = Fairu(parent=instanceA)
+        self.assertEqual(instanceA._current_directory, instanceB._current_directory)
+        self.assertEqual(instanceA._previous_directory, instanceB._previous_directory)
 
 if __name__ == '__main__':
     unittest.main()
