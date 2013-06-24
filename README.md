@@ -25,18 +25,18 @@ method's interface would be something like that:
 
     from fairu import Fairu
 
-    Fairu()
-        .goTo('~/Downloads') # assumes $HOME/Download as work folder
-        .select('*.rar')     # selects all rar files in work folder
-            .extract(result) # try to extract these rar files and save a list of extracted files
-            .delete()        # deletes these rar files
+    Fairu() \
+        .goTo('~/Downloads') \ # assumes $HOME/Download as work folder
+        .select('*.rar') \     # selects all rar files in work folder
+            .extract(result) \ # try to extract these rar files and save a list of extracted files
+            .delete()          # deletes these rar files
 
-    result                            # uses the set of files extracted
-        .select('fairu_[0-9]{3}.avi') # of this set, selects files that match this pattern
-            .move('~/Movies/fairu/')  # moves them to other folder
-            .rename('fairu_([0-9]{3}).avi', '$1.avi') # renames using a regular expression
-            .done()                   # uses the previous set before filtering
-        .remove()                     # removes all files remaing (except moved files)
+    result \                            # uses the set of files extracted
+        .select('fairu_[0-9]{3}.avi') \ # of this set, selects files that match this pattern
+            .move('~/Movies/fairu/') \  # moves them to other folder
+            .rename('fairu_([0-9]{3}).avi', '$1.avi') \ # renames using a regular expression
+            .done() \                   # uses the previous set before filtering
+        .remove()                       # removes all files remaing (except moved files)
 
 This is just a draft. Suggestions are welcome.
 

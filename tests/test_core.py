@@ -70,13 +70,14 @@ class CoreTestCase(unittest.TestCase):
     def test_add_item_to_collection(self):
         self.assertEqual(type(Fairu().add), MethodType)
 
-        instance = Fairu().\
-            add(file('COPYING')).\
-            add((file('requirements.txt'), file('setup.py'),))
+        instance = Fairu() \
+            .add(file('COPYING')) \
+            .add((file('requirements.txt'), file('setup.py'),))
 
-        self.assertEqual('COPYING', instance._elements[0].name)
-        self.assertEqual('requirements.txt', instance._elements[1].name)
-        self.assertEqual('setup.py', instance._elements[2].name)
+        elements = instance._elements
+        self.assertEqual('COPYING', elements[0].name)
+        self.assertEqual('requirements.txt', elements[1].name)
+        self.assertEqual('setup.py', elements[2].name)
 
 if __name__ == '__main__':
     unittest.main()
