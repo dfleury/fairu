@@ -44,7 +44,10 @@ class CoreTestCase(unittest.TestCase):
         self.assertEqual(len(instance), len(self.elements))
 
     def test_if_Fairu_have_a_parent_set_of_elements(self):
-        self.assertEqual(Fairu()._parent, None)
+        instanceA = Fairu()
+        self.assertEqual(instanceA._parent, None)
+        instanceB = Fairu(parent=instanceA)
+        self.assertEqual(instanceB._parent, instanceA)
 
     def test_existence_of_location_property(self):
         instance = Fairu()
